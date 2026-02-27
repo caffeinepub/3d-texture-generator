@@ -1,0 +1,91 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-build-a-texture-generator-page-where-users-can-select-a-material-category-metal-wood-stone-fabric-plastic-organic-ceramic-concrete-etc-configure-texture-parameters-base-color-roughness-metalness-bump-intensity-pattern-scale-color-variation-and-preview-the-resulting-texture-on-a-3d-sphere-rendered-with-three-js-react-three-fiber-using-the-configured-pbr-material-properties",
+      "featureTitle": "Build a Texture Generator page where users can select a material category (metal, wood, stone, fabric, plastic, organic, ceramic, concrete, etc.), configure texture parameters (base color, roughness, metalness, bump intensity, pattern scale, color variation), and preview the resulting texture on a 3D sphere rendered with Three.js / React Three Fiber using the configured PBR material properties.",
+      "files": [
+        "frontend/src/components/MaterialSelector.tsx",
+        "frontend/src/components/ParameterControls.tsx",
+        "frontend/src/components/TexturePreview3D.tsx",
+        "frontend/src/hooks/useTextureParameters.ts",
+        "frontend/src/pages/TextureGenerator.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-provide-a-texture-export-panel-that-lets-users-download-generated-texture-maps-albedo-diffuse-normal-roughness-metalness-as-png-files-suitable-for-import-into-3d-software-each-map-should-be-generated-as-a-canvas-based-image-from-the-current-parameter-settings",
+      "featureTitle": "Provide a texture export panel that lets users download generated texture maps (Albedo/Diffuse, Normal, Roughness, Metalness) as PNG files suitable for import into 3D software. Each map should be generated as a canvas-based image from the current parameter settings.",
+      "files": [
+        "frontend/src/components/TextureExportPanel.tsx",
+        "frontend/src/utils/downloadHelper.ts",
+        "frontend/src/utils/textureMapGenerator.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-presets-library-panel-where-users-can-save-the-current-texture-configuration-with-a-custom-name-browse-previously-saved-presets-load-a-preset-to-restore-its-parameters-and-delete-presets-presets-should-be-persisted-in-the-backend",
+      "featureTitle": "Add a Presets Library panel where users can save the current texture configuration with a custom name, browse previously saved presets, load a preset to restore its parameters, and delete presets. Presets should be persisted in the backend.",
+      "files": [
+        "frontend/src/components/PresetsLibrary.tsx",
+        "frontend/src/components/SavePresetDialog.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-apply-a-dark-industrial-technical-visual-theme-inspired-by-professional-3d-software-tools-use-a-dark-charcoal-and-slate-color-palette-with-amber-orange-accent-highlights-monospace-or-semi-technical-typography-and-a-panel-based-layout-with-a-central-3d-viewport-enforce-the-style-consistently-across-all-pages-and-components",
+      "featureTitle": "Apply a dark industrial / technical visual theme inspired by professional 3D software tools. Use a dark charcoal and slate color palette with amber/orange accent highlights, monospace or semi-technical typography, and a panel-based layout with a central 3D viewport. Enforce the style consistently across all pages and components.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/AppLayout.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

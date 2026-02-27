@@ -1,0 +1,19 @@
+{
+  "frontend/src/index.css": "Global styles with dark industrial theme using OKLCH color tokens, JetBrains Mono and Inter fonts, amber/orange accent palette, and utility classes for panels, tech labels, and amber glow effects.",
+  "frontend/tailwind.config.js": "Extended Tailwind config with JetBrains Mono font, industrial color tokens (amber, panel, viewport), custom shadows including amber glow, and animation for amber pulse.",
+  "frontend/src/hooks/useTextureParameters.ts": "Custom hook managing all texture generation state including material type, PBR parameters, pattern styles, and color palette, with helpers to load presets and convert to backend GenerationParameters format.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for all backend operations: user profile CRUD, and texture preset save/load/delete/list with proper cache invalidation.",
+  "frontend/src/utils/textureMapGenerator.ts": "Procedural texture map generator using Perlin noise and fBm algorithms to create Albedo, Normal, Roughness, and Metalness canvas maps for 8+ material types and pattern styles.",
+  "frontend/src/utils/downloadHelper.ts": "Utility functions to trigger browser PNG downloads from canvas elements with material-type-based filenames.",
+  "frontend/src/components/TexturePreview3D.tsx": "React Three Fiber 3D viewport rendering a sphere with PBR MeshStandardMaterial using procedurally generated canvas textures, with OrbitControls for rotation and studio lighting.",
+  "frontend/src/components/MaterialSelector.tsx": "Grid-based material category selector supporting 8 material types (metal, wood, stone, fabric, plastic, organic, ceramic, concrete) with amber highlight for active selection.",
+  "frontend/src/components/ParameterControls.tsx": "Parameter panel with color picker, pattern style buttons, and shadcn Slider components for roughness, metalness, bump intensity, pattern scale, tiling scale, and color variation.",
+  "frontend/src/components/TextureExportPanel.tsx": "Export panel with individual and batch download buttons for four PBR texture maps at 512×512 — updated `flex-shrink-0` to `shrink-0` on the color dot indicator.",
+  "frontend/src/components/SavePresetDialog.tsx": "shadcn Dialog for naming and saving the current texture configuration to the backend with inline parameter preview.",
+  "frontend/src/components/PresetsLibrary.tsx": "Scrollable list of saved presets with load and delete actions, material color indicators, and timestamps — updated `flex-shrink-0` to `shrink-0` on the color indicator element.",
+  "frontend/src/components/AppLayout.tsx": "Application shell with header (logo, auth button, user name), main content area, and footer with caffeine.ai attribution — updated `flex-shrink-0` to `shrink-0` on header and footer elements.",
+  "frontend/src/pages/TextureGenerator.tsx": "Main three-panel layout with collapsible sidebars and central 3D viewport — fixed the initial `activeMaterial` state to use `MaterialType.metal` enum value instead of the raw string `'metal'`, and added `MaterialType` to imports.",
+  "frontend/src/pages/LoginPage.tsx": "Full-screen login page with grid background, app branding, feature list, and login button — fixed by moving `useInternetIdentity` and `clear` to component top level and replacing `flex-shrink-0` with `shrink-0`.",
+  "frontend/src/pages/ProfileSetupPage.tsx": "One-time profile setup page prompting new users to enter their name before accessing the texture generator.",
+  "frontend/src/App.tsx": "Root app component handling auth state machine: initializing → login → profile setup → texture generator, wrapped in AppLayout."
+}

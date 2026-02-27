@@ -1,0 +1,115 @@
+{
+  "kind": "build_request",
+  "title": "3D Texture Generator Tool",
+  "projectName": "TextureCraft 3D",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a backend actor that stores texture generation presets and history. Each entry should include: material name, material type (metal, wood, fabric, stone, plastic, organic, etc.), generation parameters (roughness, metalness, color palette, pattern style, tiling scale), and a timestamp.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "generar texturas de cualquier material"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend exposes functions to save, retrieve, and delete texture presets",
+        "Each preset stores material type, name, parameters, and timestamp",
+        "Presets persist across sessions"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Build a Texture Generator page where users can select a material category (metal, wood, stone, fabric, plastic, organic, ceramic, concrete, etc.), configure texture parameters (base color, roughness, metalness, bump intensity, pattern scale, color variation), and preview the resulting texture on a 3D sphere rendered with Three.js / React Three Fiber using the configured PBR material properties.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "generar texturas de cualquier material"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Material category selector with at least 8 categories is visible",
+        "Parameter sliders/inputs for roughness, metalness, bump intensity, color, pattern scale are available",
+        "A 3D sphere in the viewport updates in real time to reflect the configured texture parameters",
+        "The sphere can be rotated by dragging to inspect the texture from all angles"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Provide a texture export panel that lets users download generated texture maps (Albedo/Diffuse, Normal, Roughness, Metalness) as PNG files suitable for import into 3D software. Each map should be generated as a canvas-based image from the current parameter settings.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "maquina de 3d",
+          "generar texturas de cualquier material"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Export buttons are available for Albedo, Normal, Roughness, and Metalness maps",
+        "Clicking an export button downloads the corresponding PNG file",
+        "Exported PNG files are at least 512x512 pixels"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Add a Presets Library panel where users can save the current texture configuration with a custom name, browse previously saved presets, load a preset to restore its parameters, and delete presets. Presets should be persisted in the backend.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "generar texturas de cualquier material"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Save Preset button opens a dialog to name and save the current configuration",
+        "Presets Library lists all saved presets with material type and name",
+        "Clicking a preset loads its parameters into the generator",
+        "Delete action removes the preset from both UI and backend"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Apply a dark industrial / technical visual theme inspired by professional 3D software tools. Use a dark charcoal and slate color palette with amber/orange accent highlights, monospace or semi-technical typography, and a panel-based layout with a central 3D viewport. Enforce the style consistently across all pages and components.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All pages use a dark background (charcoal / near-black)",
+        "Accent colors are consistently amber or orange",
+        "Layout follows a panel-based structure with a prominent central 3D viewport",
+        "Typography is consistent and technical in style throughout"
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not integrate any external AI/LLM services for texture generation — all texture generation must be procedural using canvas-based algorithms and Three.js material properties",
+    "All backend logic must remain in a single Motoko actor"
+  ],
+  "nonGoals": [
+    "Real-time collaboration or multi-user sessions",
+    "Cloud rendering or server-side texture baking",
+    "UV unwrapping or mesh editing features",
+    "Integration with external 3D software APIs"
+  ],
+  "imageRequirements": {
+    "required": [
+      "App logo mark — abstract geometric mesh grid forming a cube or sphere, dark background with amber/orange accent lines, technical style (texturecraft-logo.dim_256x256.png)"
+    ],
+    "edits": []
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "3D Texture Generator Tool - Frontend Implementation",
+  "requirements": [
+    {
+      "id": "REQ-2",
+      "summary": "Build Texture Generator page with material selection, parameter controls, and real-time 3D preview sphere",
+      "acceptanceCriteria": [
+        "Material category selector with at least 8 categories is visible",
+        "Parameter sliders/inputs for roughness, metalness, bump intensity, color, pattern scale are available",
+        "A 3D sphere in the viewport updates in real time to reflect the configured texture parameters",
+        "The sphere can be rotated by dragging to inspect the texture from all angles"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/TextureGenerator.tsx",
+          "operation": "create",
+          "description": "Create the main Texture Generator page component with a panel-based layout featuring a central 3D viewport, left sidebar for material category selection and parameter controls, and right sidebar for export and presets. Use the authorization component to require user authentication before accessing the page. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/MaterialSelector.tsx",
+          "operation": "create",
+          "description": "Create a material category selector component supporting at least 8 material types (metal, wood, stone, fabric, plastic, organic, ceramic, concrete) with radio buttons or a dropdown styled in the dark industrial theme."
+        },
+        {
+          "path": "frontend/src/components/ParameterControls.tsx",
+          "operation": "create",
+          "description": "Create a parameter controls panel component with sliders and color pickers for base color, roughness (0-1), metalness (0-1), bump intensity, pattern scale, and color variation. Use shadcn/ui Slider components for numerical inputs."
+        },
+        {
+          "path": "frontend/src/components/TexturePreview3D.tsx",
+          "operation": "create",
+          "description": "Create a 3D preview component using React Three Fiber (@react-three/fiber) and Drei (@react-three/drei) to render a sphere with PBR material properties. The sphere should reflect the current texture parameters in real-time and support orbit controls for rotation by dragging."
+        },
+        {
+          "path": "frontend/src/hooks/useTextureParameters.ts",
+          "operation": "create",
+          "description": "Create a custom hook to manage texture generation state including material type, roughness, metalness, color palette array, pattern style, bump intensity, pattern scale, and color variation with typed interfaces matching the backend GenerationParameters."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Provide texture export panel to download Albedo, Normal, Roughness, and Metalness PNG maps",
+      "acceptanceCriteria": [
+        "Export buttons are available for Albedo, Normal, Roughness, and Metalness maps",
+        "Clicking an export button downloads the corresponding PNG file",
+        "Exported PNG files are at least 512x512 pixels"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/TextureExportPanel.tsx",
+          "operation": "create",
+          "description": "Create a texture export panel component with four export buttons (Albedo/Diffuse, Normal, Roughness, Metalness). Each button triggers procedural canvas-based generation of the corresponding texture map at 512x512 resolution minimum and downloads it as a PNG file."
+        },
+        {
+          "path": "frontend/src/utils/textureMapGenerator.ts",
+          "operation": "create",
+          "description": "Create utility functions to procedurally generate texture maps (Albedo, Normal, Roughness, Metalness) as canvas-based images from the current parameter settings. Each function returns a canvas or data URL suitable for download. Implement noise functions and pattern algorithms to simulate different material properties without using external AI services."
+        },
+        {
+          "path": "frontend/src/utils/downloadHelper.ts",
+          "operation": "create",
+          "description": "Create a helper utility to trigger browser download of canvas-generated PNG files with appropriate filenames including material type and map type (e.g., 'metal-albedo.png')."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Add Presets Library panel for saving, loading, browsing, and deleting texture presets with backend persistence",
+      "acceptanceCriteria": [
+        "Save Preset button opens a dialog to name and save the current configuration",
+        "Presets Library lists all saved presets with material type and name",
+        "Clicking a preset loads its parameters into the generator",
+        "Delete action removes the preset from both UI and backend"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/PresetsLibrary.tsx",
+          "operation": "create",
+          "description": "Create a Presets Library panel component displaying a list of saved texture presets fetched from the backend via getAllPresets(). Each preset item shows material type, name, and timestamp with Load and Delete action buttons. Use the authorization component to ensure only authenticated users can access presets. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/SavePresetDialog.tsx",
+          "operation": "create",
+          "description": "Create a Save Preset dialog component (using shadcn/ui Dialog) that prompts the user to enter a custom name for the current texture configuration, then calls the backend savePreset() function with name, materialType, and parameters."
+        },
+        {
+          "path": "frontend/src/hooks/usePresets.ts",
+          "operation": "create",
+          "description": "Create a custom hook wrapping React Query for preset CRUD operations: fetching all presets (getAllPresets), saving a preset (savePreset), deleting a preset (deletePreset), and loading a preset into the current parameter state. Handle loading states and errors gracefully."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Apply dark industrial theme with charcoal background, amber/orange accents, technical typography, and panel-based layout",
+      "acceptanceCriteria": [
+        "All pages use a dark background (charcoal / near-black)",
+        "Accent colors are consistently amber or orange",
+        "Layout follows a panel-based structure with a prominent central 3D viewport",
+        "Typography is consistent and technical in style throughout"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Update global CSS to define the dark industrial theme color palette with charcoal/near-black background (#1a1a1a or similar), slate panel backgrounds (#2a2a2a), amber/orange accent colors (#ff9800, #f57c00), and apply a monospace or technical sans-serif font stack globally. Ensure consistent border and shadow styles for panels."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend Tailwind theme with custom colors for the industrial theme: 'charcoal' (background), 'slate-panel' (panel backgrounds), 'amber-accent' and 'orange-accent' (highlights). Add custom font family for technical typography if needed."
+        },
+        {
+          "path": "frontend/src/components/AppLayout.tsx",
+          "operation": "create",
+          "description": "Create an AppLayout component enforcing the panel-based structure with a header containing the app logo (frontend/public/assets/generated/texturecraft-logo.dim_256x256.png), main content area, and consistent dark theme styling. This layout wraps all application pages."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Update App.tsx to wrap routes with AppLayout component, apply the authorization component to protect the TextureGenerator route (require authenticated users), and register the TextureGenerator page route. Include login/profile setup flow as per authorization component usage. Verify the component's usage instructions before implementing."
+        }
+      ]
+    }
+  ]
+}

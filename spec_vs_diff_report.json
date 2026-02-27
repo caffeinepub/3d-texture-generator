@@ -1,0 +1,75 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-27T02:10:57.799Z",
+  "summary": "The implementation covers all five requirements with reasonable fidelity. The backend actor (REQ-1) stores presets with material type, name, parameters, and timestamp. The frontend provides a Texture Generator page with 8 material categories, parameter sliders, and a 3D sphere preview with OrbitControls (REQ-2). Export panel generates and downloads Albedo, Normal, Roughness, and Metalness PNG maps at 512x512 (REQ-3). A Presets Library with save dialog, load, and delete is implemented and connected to the backend (REQ-4). A dark industrial theme with amber accents, monospace typography, and panel-based layout is applied throughout (REQ-5). One minor gap is that ceramic and concrete material types are frontend-only extended types and cannot be persisted as backend presets with their own MaterialType variant.",
+  "missing_requirements": [],
+  "hallucinated_features": [
+    {
+      "description": "Export All Maps button that downloads all four texture maps at once in a single action",
+      "reason": "The build request only asked for individual export buttons per map type. A bulk Export All feature was added that was not requested.",
+      "evidence": [
+        "frontend/src/components/TextureExportPanel.tsx"
+      ]
+    },
+    {
+      "description": "getPresetsByMaterialType query and corresponding backend call for filtering presets by material",
+      "reason": "The build request only required save, retrieve all, and delete preset operations. Filtering by material type was not requested.",
+      "evidence": [
+        "frontend/src/hooks/useQueries.ts"
+      ]
+    },
+    {
+      "description": "Randomize texture parameters button in the viewport toolbar",
+      "reason": "The build request did not specify a randomize or shuffle feature for texture parameters.",
+      "evidence": [
+        "frontend/src/pages/TextureGenerator.tsx"
+      ]
+    },
+    {
+      "description": "Collapsible left and right panels with toggle chevron buttons",
+      "reason": "The build request specified a panel-based layout but did not request collapsible or toggleable panels.",
+      "evidence": [
+        "frontend/src/pages/TextureGenerator.tsx"
+      ]
+    },
+    {
+      "description": "User profile setup onboarding flow with name entry page",
+      "reason": "The build request did not mention user profiles or a profile setup step as part of the application.",
+      "evidence": [
+        "frontend/src/pages/ProfileSetupPage.tsx",
+        "frontend/src/App.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.83,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/AppLayout.tsx",
+    "frontend/src/components/MaterialSelector.tsx",
+    "frontend/src/components/ParameterControls.tsx",
+    "frontend/src/components/PresetsLibrary.tsx",
+    "frontend/src/components/SavePresetDialog.tsx",
+    "frontend/src/components/TextureExportPanel.tsx",
+    "frontend/src/components/TexturePreview3D.tsx",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/hooks/useTextureParameters.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/LoginPage.tsx",
+    "frontend/src/pages/ProfileSetupPage.tsx",
+    "frontend/src/pages/TextureGenerator.tsx",
+    "frontend/src/utils/downloadHelper.ts",
+    "frontend/src/utils/textureMapGenerator.ts",
+    "frontend/src/utils/urlParams.ts",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}

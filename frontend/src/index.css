@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.25rem;
+
+    /* Dark industrial theme - light mode still dark */
+    --background: 0.14 0.005 260;
+    --foreground: 0.92 0.01 80;
+    --card: 0.18 0.005 260;
+    --card-foreground: 0.92 0.01 80;
+    --popover: 0.20 0.005 260;
+    --popover-foreground: 0.92 0.01 80;
+    --primary: 0.72 0.18 55;
+    --primary-foreground: 0.10 0.005 260;
+    --secondary: 0.22 0.005 260;
+    --secondary-foreground: 0.85 0.01 80;
+    --muted: 0.20 0.005 260;
+    --muted-foreground: 0.55 0.01 80;
+    --accent: 0.65 0.20 50;
+    --accent-foreground: 0.10 0.005 260;
+    --destructive: 0.60 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+    --border: 0.28 0.008 260;
+    --input: 0.24 0.008 260;
+    --ring: 0.72 0.18 55;
+    --chart-1: 0.72 0.18 55;
+    --chart-2: 0.65 0.15 200;
+    --chart-3: 0.60 0.18 140;
+    --chart-4: 0.68 0.20 30;
+    --chart-5: 0.55 0.15 280;
+    --sidebar: 0.16 0.005 260;
+    --sidebar-foreground: 0.92 0.01 80;
+    --sidebar-primary: 0.72 0.18 55;
+    --sidebar-primary-foreground: 0.10 0.005 260;
+    --sidebar-accent: 0.22 0.005 260;
+    --sidebar-accent-foreground: 0.85 0.01 80;
+    --sidebar-border: 0.28 0.008 260;
+    --sidebar-ring: 0.72 0.18 55;
+
+    /* Custom industrial tokens */
+    --amber: 0.72 0.18 55;
+    --amber-bright: 0.80 0.20 60;
+    --amber-dim: 0.55 0.14 55;
+    --panel-bg: 0.18 0.005 260;
+    --panel-border: 0.28 0.008 260;
+    --viewport-bg: 0.10 0.003 260;
+  }
+
+  .dark {
+    --background: 0.12 0.005 260;
+    --foreground: 0.92 0.01 80;
+    --card: 0.16 0.005 260;
+    --card-foreground: 0.92 0.01 80;
+    --popover: 0.18 0.005 260;
+    --popover-foreground: 0.92 0.01 80;
+    --primary: 0.72 0.18 55;
+    --primary-foreground: 0.10 0.005 260;
+    --secondary: 0.20 0.005 260;
+    --secondary-foreground: 0.85 0.01 80;
+    --muted: 0.18 0.005 260;
+    --muted-foreground: 0.55 0.01 80;
+    --accent: 0.65 0.20 50;
+    --accent-foreground: 0.10 0.005 260;
+    --destructive: 0.60 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+    --border: 0.26 0.008 260;
+    --input: 0.22 0.008 260;
+    --ring: 0.72 0.18 55;
+    --sidebar: 0.14 0.005 260;
+    --sidebar-foreground: 0.92 0.01 80;
+    --sidebar-primary: 0.72 0.18 55;
+    --sidebar-primary-foreground: 0.10 0.005 260;
+    --sidebar-accent: 0.20 0.005 260;
+    --sidebar-accent-foreground: 0.85 0.01 80;
+    --sidebar-border: 0.26 0.008 260;
+    --sidebar-ring: 0.72 0.18 55;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .panel-border {
+    border: 1px solid oklch(var(--panel-border));
+  }
+
+  .amber-glow {
+    box-shadow: 0 0 12px oklch(var(--amber) / 0.3);
+  }
+
+  .amber-text {
+    color: oklch(var(--amber));
+  }
+
+  .panel-bg {
+    background-color: oklch(var(--panel-bg));
+  }
+
+  .viewport-bg {
+    background-color: oklch(var(--viewport-bg));
+  }
+
+  .tech-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: oklch(var(--muted-foreground));
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: oklch(var(--background));
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: oklch(var(--border));
+    border-radius: 2px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: oklch(var(--amber));
+  }
+}
